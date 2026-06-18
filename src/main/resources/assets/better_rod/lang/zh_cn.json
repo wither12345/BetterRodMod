@@ -1,0 +1,17 @@
+{
+    "item.better_rod.auto_filler": "自动装桶器",
+    "item.better_rod.cod_bait": "鳕鱼饵",
+    "item.better_rod.diamond_spiked_hook": "钻石钩",
+    "item.better_rod.elastic_line": "弹性线",
+    "item.better_rod.ender_line": "末影线",
+    "item.better_rod.golden_spiked_hook": "金钩",
+    "item.better_rod.iron_spiked_hook": "铁钩",
+    "item.better_rod.mixed_bait": "混合饵",
+    "item.better_rod.netherite_spiked_hook": "下界合金钩",
+    "item.better_rod.quick_clock": "迅捷钟",
+    "item.better_rod.salmon_bait": "鲑鱼饵",
+    "item.better_rod.sticky_hook": "粘性钩",
+    "item.better_rod.tipped_hook": "药水钩",
+    "item.better_rod.wind_hook": "狂风钩",
+    "itemGroup.better_rods": "更好的鱼竿"
+}

@@ -1,0 +1,85 @@
+{
+  "type": "minecraft:fishing",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:coal",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bone",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:string",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:rotten_flesh",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [],
+          "name": "minecraft:netherrack",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:soul_sand"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:glowstone_dust",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_boots",
+          "weight": 10,
+          "conditions": [],
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 0,
+                "max": 1
+              },
+              "options": "#minecraft:non_treasure"
+            },
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gold_nugget",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:blaze_powder",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:magma_cream",
+          "weight": 2
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "minecraft:gameplay/fishing/junk"
+}

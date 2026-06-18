@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "show_notification": true,
+  "group": "ender_line",
+  "category": "misc",
+  "pattern": [
+    "pep",
+    "sss",
+    "pep"
+  ],
+  "key": {
+    "e": "minecraft:ender_eye",
+    "p": "minecraft:ender_pearl",
+    "s": "string"
+  },
+  "result": "better_rod:ender_line"
+}

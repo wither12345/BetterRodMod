@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "show_notification": true,
+  "group": "diamond_spiked_hook",
+  "category": "misc",
+  "ingredients": [
+    "better_rod:iron_spiked_hook",
+    "minecraft:diamond"
+  ],
+  "result": "better_rod:diamond_spiked_hook"
+}

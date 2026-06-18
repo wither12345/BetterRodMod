@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:fishing",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "quality": -2,
+          "value": "better_rod:gameplay/fishing/default/lava_junk",
+          "weight": 15
+        },
+        {
+          "type": "minecraft:loot_table",
+          "quality": 2,
+          "value": "better_rod:gameplay/fishing/default/lava_treasure",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:loot_table",
+          "quality": -1,
+          "value": "better_rod:gameplay/fishing/default/lava_fish",
+          "weight": 75
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "minecraft:gameplay/fishing"
+}

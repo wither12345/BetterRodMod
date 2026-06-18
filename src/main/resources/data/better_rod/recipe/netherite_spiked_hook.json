@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smithing_transform",
+  "show_notification": true,
+  "base": [
+    "better_rod:diamond_spiked_hook"
+  ],
+  "addition": "minecraft:netherite_ingot",
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "result": "better_rod:netherite_spiked_hook"
+}

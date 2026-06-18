@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "better_rod:item/tipped_hook_head",
+    "layer1": "better_rod:item/tipped_hook_base"
+  }
+}

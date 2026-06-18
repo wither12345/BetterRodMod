@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "mixed_bait",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:salmon",
+    "cod"
+  ],
+  "result": {
+    "id": "better_rod:mixed_bait",
+    "count": 16
+  }
+}

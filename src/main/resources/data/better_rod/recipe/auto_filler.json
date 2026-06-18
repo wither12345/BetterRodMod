@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "auto_filler",
+  "category": "misc",
+  "pattern": [
+    "iri",
+    "rbr",
+    "iri"
+  ],
+  "key": {
+    "b": "minecraft:bucket",
+    "r": "minecraft:redstone",
+    "i": "minecraft:iron_ingot"
+  },
+  "result": "better_rod:auto_filler"
+}

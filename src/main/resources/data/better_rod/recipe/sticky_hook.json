@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "show_notification": true,
+  "group": "sticky_hook",
+  "pattern": [
+    " s ",
+    "shs",
+    " s "
+  ],
+  "key": {
+    "s": "minecraft:slime_ball",
+    "h": "better_rod:iron_spiked_hook"
+  },
+  "result": "better_rod:sticky_hook"
+}

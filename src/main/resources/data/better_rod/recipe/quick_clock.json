@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "show_notification": true,
+  "group": "quick_clock",
+  "pattern": [
+    "bgb",
+    "gcg",
+    "bgb"
+  ],
+  "key": {
+    "c": "minecraft:clock",
+    "b": "minecraft:copper_ingot",
+    "g": "minecraft:gold_ingot"
+  },
+  "result": "better_rod:quick_clock"
+}

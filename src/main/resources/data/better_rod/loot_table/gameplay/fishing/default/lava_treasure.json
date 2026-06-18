@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:fishing",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:book",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": 40
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:amethyst_shard",
+          "weight": 1
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "minecraft:gameplay/fishing/treasure"
+}

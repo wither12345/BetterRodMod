@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "cod_bait",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:cod"
+  ],
+  "result": {
+    "id": "better_rod:cod_bait",
+    "count": 8
+  }
+}
