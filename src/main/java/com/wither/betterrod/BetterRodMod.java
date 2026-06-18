@@ -63,6 +63,7 @@ public class BetterRodMod {
                 TippedHook.putOnTab(output);
                 output.accept(ItemRegister.AUTO_FILLER);
                 output.accept(ItemRegister.QUICK_CLOCK);
+                output.accept(ItemRegister.SILMON);
             }).build());
 
 

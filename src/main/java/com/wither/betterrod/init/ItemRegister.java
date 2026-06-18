@@ -32,4 +32,5 @@ public class ItemRegister {
             new BaitComponent(List.of(new BaitComponent.Attract(BaitComponent.FISH_BAIT, 0.03)),5, 40, 160))));
     public static final DeferredItem<@NotNull Item> MIXED_BAIT = ITEMS.registerItem("mixed_bait", p -> new Item(p.component(ItemComponentsRegister.BAIT,
             new BaitComponent(List.of(new BaitComponent.Attract(BaitComponent.FISH_BAIT, 0.05)),5, 30, 100))));
+    public static final DeferredItem<@NotNull Item> SILMON = ITEMS.registerItem("silmon", Item::new);
 }
