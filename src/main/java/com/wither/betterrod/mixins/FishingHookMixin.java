@@ -3,6 +3,7 @@ package com.wither.betterrod.mixins;
 import com.wither.betterrod.init.ItemComponentsRegister;
 import com.wither.betterrod.item.HookInterface;
 import com.wither.betterrod.item.RodEquipmentItem;
+import com.wither.betterrod.item.TippedHook;
 import com.wither.betterrod.item.components.BaitComponent;
 import com.wither.betterrod.item.components.FishingRodComponents;
 import net.minecraft.core.BlockPos;
@@ -12,6 +13,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
@@ -89,8 +91,9 @@ public abstract class FishingHookMixin extends Projectile implements HookInterfa
     @Inject(method = "setHookedEntity", at = @At("TAIL"))
     private void setHookedEntity(@Nullable Entity hookedIn, CallbackInfo info){
         PotionContents contents = better_rod$HookItem.get(DataComponents.POTION_CONTENTS);
-        if(contents != null && hookedIn instanceof LivingEntity living)
-            contents.applyToLivingEntity(living, better_rod$HookItem.getOrDefault(DataComponents.POTION_DURATION_SCALE, 1.0F));
+        if(contents != null && hookedIn instanceof LivingEntity living){
+            TippedHook.applyEffect(contents, living, this.getOwner(), better_rod$HookItem.getOrDefault(DataComponents.POTION_DURATION_SCALE, 1.0F));
+        }
     }
 
 
@@ -115,6 +118,8 @@ public abstract class FishingHookMixin extends Projectile implements HookInterfa
         if(hookedIn != null && this.getOwner() != null){
             Vec3 d = this.getOwner().position().subtract(hookedIn.position()).normalize();
             hookedIn.push(this.getOwner().getLookAngle().add(d));
+            if(hookedIn instanceof Player player)
+                player.hurtMarked = true;
         }
     }
 

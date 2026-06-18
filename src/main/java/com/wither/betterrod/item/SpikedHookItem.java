@@ -30,7 +30,7 @@ public class SpikedHookItem extends HookItem {
     public void onTick(Projectile hook, Entity hookedIn) {
         if(hookedIn != null)
             BetterRodMod.LOGGER.info(String.valueOf(hookedIn.getDeltaMovement().lengthSqr()));
-        if(hookedIn != null && hookedIn.getDeltaMovement().lengthSqr() > 1 && hook instanceof HookInterface hookInterface){
+        if(hookedIn != null && hookedIn.getDeltaMovement().lengthSqr() > 2 && hook instanceof HookInterface hookInterface){
             damage(hook, hookedIn, damage * 0.4f);
             hookedIn.setDeltaMovement(hookedIn.getDeltaMovement().multiply(0.2,0.2,0.2));
             hookInterface.better_rod$forceSetHooked(null);
