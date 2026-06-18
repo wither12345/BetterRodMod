@@ -4,6 +4,7 @@ import com.wither.betterrod.BetterRodMod;
 import com.wither.betterrod.item.*;
 import com.wither.betterrod.item.components.BaitComponent;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -12,6 +13,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class ItemRegister {
+
+
+
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(BetterRodMod.MODID);
 
 
@@ -32,5 +36,7 @@ public class ItemRegister {
             new BaitComponent(List.of(new BaitComponent.Attract(BaitComponent.FISH_BAIT, 0.03)),5, 40, 160))));
     public static final DeferredItem<@NotNull Item> MIXED_BAIT = ITEMS.registerItem("mixed_bait", p -> new Item(p.component(ItemComponentsRegister.BAIT,
             new BaitComponent(List.of(new BaitComponent.Attract(BaitComponent.FISH_BAIT, 0.05)),5, 30, 100))));
-    public static final DeferredItem<@NotNull Item> SILMON = ITEMS.registerItem("silmon", Item::new);
+    public static final DeferredItem<@NotNull Item> SILMON = ITEMS.registerItem("silmon",p -> new Item(p
+            .food(Foods.SALMON, BetterRodConsumables.SILMON)
+    ));
 }

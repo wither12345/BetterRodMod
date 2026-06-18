@@ -42,6 +42,7 @@ public class NetheriteHookEntity extends FishingHook {
     public static final ResourceKey<@NotNull LootTable> NETHER_LAVA_FISH = ResourceKey.create(Registries.LOOT_TABLE, Identifier.parse("better_rod:gameplay/fishing/nether/lava_fishing"));
     public static final ResourceKey<@NotNull LootTable> DEFAULT_LAVA_FISH = ResourceKey.create(Registries.LOOT_TABLE, Identifier.parse("better_rod:gameplay/fishing/default/lava_fishing"));
     private int outOfLavaTime;
+    private boolean inLava = false;
     public NetheriteHookEntity(Player player, Level level, int luck, int lureSpeed) {
         super(player, level, luck, lureSpeed);
     }
@@ -73,6 +74,7 @@ public class NetheriteHookEntity extends FishingHook {
             if (isInLava) {
                 this.setDeltaMovement(this.getDeltaMovement().multiply(0.3, 0.2, 0.3));
                 this.currentState = FishingHook.FishHookState.BOBBING;
+                this.inLava = isInLava;
                 return;
             }
         }
@@ -109,8 +111,7 @@ public class NetheriteHookEntity extends FishingHook {
     public int retrieve(@NotNull ItemStack rod){
         Player owner = this.getPlayerOwner();
         BlockPos blockPos = this.blockPosition();
-        FluidState fluidState = this.level().getFluidState(blockPos);
-        if (Config.LAVA_FISHING.get() && !this.level().isClientSide() && owner != null && !this.shouldStopFishing(owner) && fluidState.is(FluidTags.LAVA)) {
+        if (Config.LAVA_FISHING.get() && !this.level().isClientSide() && owner != null && !this.shouldStopFishing(owner) && inLava) {
             int dmg = 0 ;
             if (this.nibble > 0) {
                 if(this.level().dimension() == Level.NETHER) {
@@ -217,13 +218,11 @@ public class NetheriteHookEntity extends FishingHook {
 
     private void catchingLavaFish(BlockPos blockPos) {
         ServerLevel serverLevel = (ServerLevel)this.level();
-        int fishingSpeed = 1;
         BlockPos above = blockPos.above();
-        if (this.random.nextFloat() < 0.25F && this.level().isRainingAt(above)) {
-            fishingSpeed++;
-        }
-
-        if (this.random.nextFloat() < 0.5F && !this.level().canSeeSky(above)) {
+        int fishingSpeed = 1;
+        if(this.random.nextFloat() < 0.25f && this.level().dimension() == Level.NETHER)
+            fishingSpeed ++ ;
+        if (this.random.nextFloat() < 0.5F && this.level().canSeeSky(above)) {
             fishingSpeed--;
         }
 
