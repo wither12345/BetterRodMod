@@ -56,6 +56,7 @@ public class BetterRodMod {
                 output.accept(ItemRegister.IRON_SPIKED_HOOK);
                 output.accept(ItemRegister.DIAMOND_SPIKED_HOOK);
                 output.accept(ItemRegister.NETHERITE_SPIKED_HOOK);
+                output.accept(ItemRegister.NETHER_BRICK_HOOK);
                 output.accept(ItemRegister.STICKY_HOOK);
                 output.accept(ItemRegister.WIND_HOOK);
                 output.accept(ItemRegister.ENDER_LINE);
@@ -63,6 +64,7 @@ public class BetterRodMod {
                 TippedHook.putOnTab(output);
                 output.accept(ItemRegister.AUTO_FILLER);
                 output.accept(ItemRegister.QUICK_CLOCK);
+                output.accept(ItemRegister.LUCK_CLOVER);
                 output.accept(ItemRegister.SILMON);
             }).build());
 

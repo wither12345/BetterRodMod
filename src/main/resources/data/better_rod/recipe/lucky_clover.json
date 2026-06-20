@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "show_notification": true,
+  "group": "lucky_clover",
+  "pattern": [
+    " l ",
+    "ltl",
+    " l "
+  ],
+  "key": {
+    "l": "minecraft:lily_pad",
+    "t": "#minecraft:leaves"
+  },
+  "result": "better_rod:lucky_clover"
+}

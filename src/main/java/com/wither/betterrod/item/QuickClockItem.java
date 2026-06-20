@@ -1,6 +1,5 @@
 package com.wither.betterrod.item;
 
-import com.wither.betterrod.item.components.FishingRodComponents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.Projectile;
 import org.jetbrains.annotations.Nullable;
@@ -11,8 +10,8 @@ public class QuickClockItem extends RodEquipmentItem {
     }
 
     @Override
-    public FishingRodComponents.FishingEquipmentSlot getSlot() {
-        return FishingRodComponents.FishingEquipmentSlot.ACCESSORY;
+    public FishingEquipmentSlot getSlot() {
+        return FishingEquipmentSlot.ACCESSORY;
     }
 
     @Override

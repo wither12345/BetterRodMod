@@ -1,6 +1,5 @@
 package com.wither.betterrod.item;
 
-import com.wither.betterrod.item.components.FishingRodComponents;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -19,8 +18,8 @@ public class AutoFillerItem extends RodEquipmentItem{
     }
 
     @Override
-    public FishingRodComponents.FishingEquipmentSlot getSlot() {
-        return FishingRodComponents.FishingEquipmentSlot.ACCESSORY;
+    public FishingEquipmentSlot getSlot() {
+        return FishingEquipmentSlot.ACCESSORY;
     }
 
     @Override

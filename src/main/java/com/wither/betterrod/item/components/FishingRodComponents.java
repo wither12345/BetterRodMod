@@ -2,6 +2,7 @@ package com.wither.betterrod.item.components;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.wither.betterrod.item.FishingEquipmentSlot;
 import com.wither.betterrod.item.HookItem;
 import com.wither.betterrod.item.RodEquipmentItem;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -9,8 +10,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -22,7 +25,7 @@ public record FishingRodComponents(ItemStack line, ItemStack hook, ItemStack acc
                     ItemStack.OPTIONAL_CODEC.fieldOf("accessory").forGetter(FishingRodComponents::accessory)
             ).apply(instance, FishingRodComponents::new)
     );
-    public static final StreamCodec<RegistryFriendlyByteBuf, FishingRodComponents> STREAM_CODEC = StreamCodec.composite(
+    public static final StreamCodec<@NotNull RegistryFriendlyByteBuf, @NotNull FishingRodComponents> STREAM_CODEC = StreamCodec.composite(
             ItemStack.OPTIONAL_STREAM_CODEC, FishingRodComponents::line,
             ItemStack.OPTIONAL_STREAM_CODEC, FishingRodComponents::hook,
             ItemStack.OPTIONAL_STREAM_CODEC, FishingRodComponents::accessory,
@@ -65,9 +68,17 @@ public record FishingRodComponents(ItemStack line, ItemStack hook, ItemStack acc
         return hook;
     }
 
-    public enum FishingEquipmentSlot {
-        LINE,
-        HOOK,
-        ACCESSORY;
+    public FishingRodComponents pickUp(Slot slot) {
+        if(!line.isEmpty()){
+            slot.set(line);
+            return new FishingRodComponents(ItemStack.EMPTY, hook, accessory);
+        }
+        if(!hook.isEmpty()){
+            slot.set(hook);
+            return new FishingRodComponents(ItemStack.EMPTY, ItemStack.EMPTY, accessory);
+        }
+        slot.set(accessory);
+        return new FishingRodComponents(ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY);
     }
+
 }

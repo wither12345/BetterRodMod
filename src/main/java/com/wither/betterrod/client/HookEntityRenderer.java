@@ -2,7 +2,6 @@ package com.wither.betterrod.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.wither.betterrod.entity.NetheriteHookEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.culling.Frustum;
@@ -17,18 +16,19 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
-public class NetheriteHookRenderer extends EntityRenderer<@NotNull NetheriteHookEntity, @NotNull FishingHookRenderState> {
-    private static final Identifier TEXTURE_LOCATION = Identifier.parse("better_rod:textures/entity/netherite_hook.png");
-    private static final RenderType RENDER_TYPE = RenderTypes.entityCutoutCull(TEXTURE_LOCATION);
+public class HookEntityRenderer extends EntityRenderer<@NotNull FishingHook, @NotNull FishingHookRenderState> {
+    private final RenderType RENDER_TYPE ;
 
-    public NetheriteHookRenderer(EntityRendererProvider.Context context) {
+    public HookEntityRenderer(EntityRendererProvider.Context context, Identifier textureLocation) {
         super(context);
+        RENDER_TYPE = RenderTypes.entityCutoutCull(textureLocation);
     }
 
-    public boolean shouldRender(NetheriteHookEntity entity, @NotNull Frustum culler, double camX, double camY, double camZ) {
+    public boolean shouldRender(FishingHook entity, @NotNull Frustum culler, double camX, double camY, double camZ) {
         return super.shouldRender(entity, culler, camX, camY, camZ) && entity.getPlayerOwner() != null;
     }
 
@@ -123,7 +123,7 @@ public class NetheriteHookRenderer extends EntityRenderer<@NotNull NetheriteHook
         return new FishingHookRenderState();
     }
 
-    public void extractRenderState(NetheriteHookEntity entity, FishingHookRenderState state, float partialTicks) {
+    public void extractRenderState(FishingHook entity, FishingHookRenderState state, float partialTicks) {
         super.extractRenderState(entity, state, partialTicks);
         Player owner = entity.getPlayerOwner();
         if (owner == null) {
@@ -137,7 +137,7 @@ public class NetheriteHookRenderer extends EntityRenderer<@NotNull NetheriteHook
         }
     }
 
-    protected boolean affectedByCulling(NetheriteHookEntity entity) {
+    protected boolean affectedByCulling(FishingHook entity) {
         return false;
     }
 }

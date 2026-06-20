@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "show_notification": true,
+  "group": "nether_brick_hook",
+  "pattern": [
+    "  b",
+    "b b",
+    " b "
+  ],
+  "key": {
+    "b": "minecraft:nether_brick"
+  },
+  "result": "better_rod:nether_brick_hook"
+}

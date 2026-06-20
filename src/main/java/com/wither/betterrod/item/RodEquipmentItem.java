@@ -1,6 +1,5 @@
 package com.wither.betterrod.item;
 
-import com.wither.betterrod.item.components.FishingRodComponents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -10,10 +9,10 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class RodEquipmentItem extends Item {
     public RodEquipmentItem(Properties properties) {
-        super(properties);
+        super(properties.stacksTo(1));
     }
 
-    public abstract FishingRodComponents.FishingEquipmentSlot getSlot();
+    public abstract FishingEquipmentSlot getSlot();
 
     public void modifyHook(FishingHook hook, ItemStack itemStack) {
         if(hook instanceof HookInterface hookInterface)

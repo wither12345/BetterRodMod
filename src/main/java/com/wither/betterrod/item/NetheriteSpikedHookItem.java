@@ -5,8 +5,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.level.Level;
 
-public class NetheriteSpikedHook extends SpikedHookItem{
-    public NetheriteSpikedHook(Properties properties, float damage) {
+public class NetheriteSpikedHookItem extends SpikedHookItem{
+    public NetheriteSpikedHookItem(Properties properties, float damage) {
         super(properties, damage);
     }
 

@@ -2,6 +2,7 @@ package com.wither.betterrod.init;
 
 import com.wither.betterrod.BetterRodMod;
 import com.wither.betterrod.entity.HookedBlockEntity;
+import com.wither.betterrod.entity.NetherBrickHookEntity;
 import com.wither.betterrod.entity.NetheriteHookEntity;
 import com.wither.betterrod.entity.StickyHookEntity;
 import net.minecraft.world.entity.EntityType;
@@ -17,7 +18,7 @@ public class EntityRegister {
             "sticky_hook",
             StickyHookEntity::new,
             MobCategory.MISC,
-            (stickyHookEntityBuilder -> stickyHookEntityBuilder
+            (builder -> builder
                     .noLootTable()
                     .noSave()
                     .noSummon()
@@ -32,7 +33,22 @@ public class EntityRegister {
             "netherite_hook",
             NetheriteHookEntity::new,
             MobCategory.MISC,
-            (netheriteHookEntityBuilder -> netheriteHookEntityBuilder
+            (builder -> builder
+                    .noLootTable()
+                    .noSave()
+                    .noSummon()
+                    .sized(0.25F, 0.25F)
+                    .clientTrackingRange(4)
+                    .updateInterval(5)
+                    .fireImmune()
+            )
+    );
+
+    public static final DeferredHolder<@NotNull EntityType<?>, @NotNull EntityType<@NotNull NetherBrickHookEntity>> NETHER_BRICK_HOOK = ENTITIES.registerEntityType(
+            "nether_brick_hook",
+            NetherBrickHookEntity::new,
+            MobCategory.MISC,
+            (builder -> builder
                     .noLootTable()
                     .noSave()
                     .noSummon()

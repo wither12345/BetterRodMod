@@ -1,6 +1,5 @@
 package com.wither.betterrod.item;
 
-import com.wither.betterrod.item.components.FishingRodComponents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -15,8 +14,8 @@ public class ElasticLineItem extends RodEquipmentItem{
     }
 
     @Override
-    public FishingRodComponents.FishingEquipmentSlot getSlot() {
-        return FishingRodComponents.FishingEquipmentSlot.LINE;
+    public FishingEquipmentSlot getSlot() {
+        return FishingEquipmentSlot.LINE;
     }
 
     @Override

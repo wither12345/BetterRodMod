@@ -1,8 +1,5 @@
 package com.wither.betterrod.mixins;
 
-import com.wither.betterrod.init.ItemComponentsRegister;
-import com.wither.betterrod.item.RodEquipmentItem;
-import com.wither.betterrod.item.components.FishingRodComponents;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ClickAction;
@@ -22,6 +19,7 @@ public class ItemMixin {
         cancellable = true
     )
     public void overrideStackedOnOther(ItemStack self, Slot slot, ClickAction clickAction, Player player, CallbackInfoReturnable<Boolean> info){
+        /*
         FishingRodComponents fishingRodComponents = self.get(ItemComponentsRegister.FISHING_ROD);
         FishingRodComponents.FishingEquipmentSlot equipmentSlot;
         if (fishingRodComponents != null && self.getCount() == 1) {
@@ -37,6 +35,8 @@ public class ItemMixin {
                 }
             }
         }
+
+         */
     }
 
     @Unique

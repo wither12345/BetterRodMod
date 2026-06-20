@@ -1,6 +1,5 @@
 package com.wither.betterrod.item;
 
-import com.wither.betterrod.item.components.FishingRodComponents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -16,8 +15,8 @@ public class EnderLineItem extends RodEquipmentItem{
     }
 
     @Override
-    public FishingRodComponents.FishingEquipmentSlot getSlot() {
-        return FishingRodComponents.FishingEquipmentSlot.LINE;
+    public FishingEquipmentSlot getSlot() {
+        return FishingEquipmentSlot.LINE;
     }
 
     @Override

@@ -1,11 +1,11 @@
 package com.wither.betterrod.mixins;
 
 import com.wither.betterrod.init.ItemComponentsRegister;
+import com.wither.betterrod.item.FishingEquipmentSlot;
 import com.wither.betterrod.item.HookInterface;
 import com.wither.betterrod.item.RodEquipmentItem;
 import com.wither.betterrod.item.TippedHook;
 import com.wither.betterrod.item.components.BaitComponent;
-import com.wither.betterrod.item.components.FishingRodComponents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -105,7 +105,7 @@ public abstract class FishingHookMixin extends Projectile implements HookInterfa
     }
 
     @Override
-    public void better_rod$setEquipmentItem(FishingRodComponents.FishingEquipmentSlot slot, ItemStack item) {
+    public void better_rod$setEquipmentItem(FishingEquipmentSlot slot, ItemStack item) {
         switch (slot){
             case LINE -> this.better_rod$LineItem = item;
             case HOOK -> this.better_rod$HookItem = item;
