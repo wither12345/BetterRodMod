@@ -9,14 +9,9 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 
-public class EnderLineItem extends RodEquipmentItem{
+public class EnderLineItem extends LineItem{
     public EnderLineItem(Properties properties) {
         super(properties);
-    }
-
-    @Override
-    public FishingEquipmentSlot getSlot() {
-        return FishingEquipmentSlot.LINE;
     }
 
     @Override

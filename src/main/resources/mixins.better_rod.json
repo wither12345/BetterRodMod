@@ -6,8 +6,7 @@
     "AbstractFishMixin",
     "FishingHookMixin",
     "FishingRodMixin",
-    "ItemEntityMixin",
-    "ItemMixin"
+    "ItemEntityMixin"
   ],
   "client": [
   ],

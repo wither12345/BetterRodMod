@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "show_notification": true,
+  "group": "weeping_vines_line",
+  "category": "misc",
+  "pattern": [
+    "bbb",
+    "lll",
+    "bbb"
+  ],
+  "key": {
+    "b": "minecraft:nether_brick",
+    "l": "minecraft:weeping_vines"
+  },
+  "result": "better_rod:weeping_vines_line"
+}

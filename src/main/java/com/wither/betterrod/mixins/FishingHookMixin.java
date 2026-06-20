@@ -115,11 +115,16 @@ public abstract class FishingHookMixin extends Projectile implements HookInterfa
 
     @Override
     public void better_rod$swing() {
-        if(hookedIn != null && this.getOwner() != null){
-            Vec3 d = this.getOwner().position().subtract(hookedIn.position()).normalize();
-            hookedIn.push(this.getOwner().getLookAngle().add(d));
-            if(hookedIn instanceof Player player)
-                player.hurtMarked = true;
+        if(this.getOwner() != null && this.getOwner() != this.hookedIn) {
+            Vec3 d = this.getOwner().position().subtract(this.position()).normalize();
+            d = this.getOwner().getLookAngle().add(d);
+            if (hookedIn != null) {
+                hookedIn.push(d);
+                if (hookedIn instanceof Player player)
+                    player.hurtMarked = true;
+            } else {
+                this.push(d.scale(2));
+            }
         }
     }
 

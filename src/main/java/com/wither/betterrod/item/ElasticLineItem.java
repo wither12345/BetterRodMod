@@ -8,14 +8,9 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.Objects;
 
-public class ElasticLineItem extends RodEquipmentItem{
+public class ElasticLineItem extends LineItem{
     public ElasticLineItem(Properties properties) {
         super(properties);
-    }
-
-    @Override
-    public FishingEquipmentSlot getSlot() {
-        return FishingEquipmentSlot.LINE;
     }
 
     @Override

@@ -61,10 +61,12 @@ public class BetterRodMod {
                 output.accept(ItemRegister.WIND_HOOK);
                 output.accept(ItemRegister.ENDER_LINE);
                 output.accept(ItemRegister.ELASTIC_LINE);
-                TippedHook.putOnTab(output);
+                output.accept(ItemRegister.TWISTING_VINES_LINE);
+                output.accept(ItemRegister.WEEPING_VINES_LINE);
                 output.accept(ItemRegister.AUTO_FILLER);
                 output.accept(ItemRegister.QUICK_CLOCK);
                 output.accept(ItemRegister.LUCK_CLOVER);
+                TippedHook.putOnTab(output);
                 output.accept(ItemRegister.SILMON);
             }).build());
 

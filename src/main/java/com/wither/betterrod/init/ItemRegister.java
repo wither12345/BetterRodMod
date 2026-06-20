@@ -29,6 +29,8 @@ public class ItemRegister {
     public static final DeferredItem<@NotNull Item> TIPPED_HOOK = ITEMS.registerItem("tipped_hook", p -> new TippedHook(p.component(DataComponents.POTION_DURATION_SCALE, 0.25f)));
     public static final DeferredItem<@NotNull Item> ENDER_LINE = ITEMS.registerItem("ender_line", EnderLineItem::new);
     public static final DeferredItem<@NotNull Item> ELASTIC_LINE = ITEMS.registerItem("elastic_line", ElasticLineItem::new);
+    public static final DeferredItem<@NotNull Item> TWISTING_VINES_LINE = ITEMS.registerItem("twisting_vines_line", TwistingVinesLineItem::new);
+    public static final DeferredItem<@NotNull Item> WEEPING_VINES_LINE = ITEMS.registerItem("weeping_vines_line", WeepingVinesLineItem::new);
     public static final DeferredItem<@NotNull Item> AUTO_FILLER = ITEMS.registerItem("auto_filler", AutoFillerItem::new);
     public static final DeferredItem<@NotNull Item> QUICK_CLOCK = ITEMS.registerItem("quick_clock", QuickClockItem::new);
     public static final DeferredItem<@NotNull Item> LUCK_CLOVER = ITEMS.registerItem("lucky_clover", LuckyCloverItem::new);
