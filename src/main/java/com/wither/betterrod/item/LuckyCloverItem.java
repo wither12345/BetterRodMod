@@ -1,5 +1,6 @@
 package com.wither.betterrod.item;
 
+import com.wither.betterrod.item.components.FishingEquipmentSlot;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;

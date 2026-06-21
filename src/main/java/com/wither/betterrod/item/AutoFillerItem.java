@@ -1,5 +1,6 @@
 package com.wither.betterrod.item;
 
+import com.wither.betterrod.item.components.FishingEquipmentSlot;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;

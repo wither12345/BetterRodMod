@@ -19,12 +19,12 @@ public class WeepingVinesLineItem extends LineItem{
         if(hook.level().getGameTime() % 20 == 0 && hook.getOwner() != null) {
             Vec3 vec0 = hook.position();
             Vec3 vec1 = hook.getOwner().position().add(0,1.5,0);
-            for(Entity entity: getEntities(hook, vec0, vec1)){
+            for(Entity entity: getEntities(hook, hookedIn, vec0, vec1)){
                 if (entity instanceof LivingEntity living) {
                     AABB entityBox = entity.getBoundingBox();
                     if (lineIntersectsAABB(vec0, vec1, entityBox)) {
-                        living.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 40, 0));
-                        living.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 40, 0));
+                        living.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 20, 0));
+                        living.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 20, 0));
                     }
                 }
             }

@@ -1,5 +1,6 @@
 package com.wither.betterrod.item;
 
+import com.wither.betterrod.item.components.FishingEquipmentSlot;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -18,11 +19,11 @@ public class LineItem extends RodEquipmentItem{
         return FishingEquipmentSlot.LINE;
     }
 
-    public static List<Entity> getEntities(Projectile hook, Vec3 vec0, Vec3 vec1){
+    public static List<Entity> getEntities(Projectile hook, Entity hookedIn, Vec3 vec0, Vec3 vec1){
         AABB area = new AABB(vec0.x, vec0.y, vec0.z, vec1.x, vec1.y, vec1.z);
 
         return hook.level().getEntities(hook.getOwner(), area,
-                entity -> entity.isAlive() && entity instanceof LivingEntity
+                entity -> entity.isAlive() && entity instanceof LivingEntity  && entity != hookedIn
         );
     }
 

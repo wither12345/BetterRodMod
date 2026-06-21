@@ -1,5 +1,6 @@
 package com.wither.betterrod.item;
 
+import com.wither.betterrod.item.components.FishingEquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.level.Level;

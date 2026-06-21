@@ -18,5 +18,8 @@
     "item.better_rod.twisting_vines_line": "Twisting Vines Line",
     "item.better_rod.weeping_vines_line": "Weeping Vines Line",
     "item.better_rod.wind_hook": "Wind Hook",
-    "itemGroup.better_rods": "Better Rods"
+    "itemGroup.better_rods": "Better Rods",
+    "lore.better_rod.empty_accessory": "[Empty Accessory]",
+    "lore.better_rod.empty_hook": "[Empty Hook]",
+    "lore.better_rod.empty_line": "[Empty Line]"
 }

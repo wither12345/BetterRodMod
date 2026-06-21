@@ -1,7 +1,7 @@
 package com.wither.betterrod.mixins;
 
 import com.wither.betterrod.init.ItemComponentsRegister;
-import com.wither.betterrod.item.FishingEquipmentSlot;
+import com.wither.betterrod.item.components.FishingEquipmentSlot;
 import com.wither.betterrod.item.HookInterface;
 import com.wither.betterrod.item.RodEquipmentItem;
 import com.wither.betterrod.item.TippedHook;
@@ -119,6 +119,8 @@ public abstract class FishingHookMixin extends Projectile implements HookInterfa
             Vec3 d = this.getOwner().position().subtract(this.position()).normalize();
             d = this.getOwner().getLookAngle().add(d);
             if (hookedIn != null) {
+                if(hookedIn.isInWater())
+                    d = d.scale(0.2);
                 hookedIn.push(d);
                 if (hookedIn instanceof Player player)
                     player.hurtMarked = true;

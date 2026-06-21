@@ -1,4 +1,4 @@
-package com.wither.betterrod.item;
+package com.wither.betterrod.item.components;
 
 public enum FishingEquipmentSlot {
     LINE,

@@ -2,22 +2,26 @@ package com.wither.betterrod.item.components;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.wither.betterrod.item.FishingEquipmentSlot;
+import com.wither.betterrod.init.ItemComponentsRegister;
 import com.wither.betterrod.item.HookItem;
 import com.wither.betterrod.item.RodEquipmentItem;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public record FishingRodComponents(ItemStack line, ItemStack hook, ItemStack accessory) {
+public record FishingRodComponents(ItemStack line, ItemStack hook, ItemStack accessory) implements ModifyDefaultComponentsEvent.Initializer {
     public static final Codec<FishingRodComponents> CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     ItemStack.OPTIONAL_CODEC.fieldOf("line").forGetter(FishingRodComponents::line),
@@ -31,6 +35,10 @@ public record FishingRodComponents(ItemStack line, ItemStack hook, ItemStack acc
             ItemStack.OPTIONAL_STREAM_CODEC, FishingRodComponents::accessory,
             FishingRodComponents::new
     );
+
+    public FishingRodComponents(){
+        this(ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY);
+    }
 
     public ItemStack getEquipment(FishingEquipmentSlot slot) {
         return switch (slot) {
@@ -50,10 +58,16 @@ public record FishingRodComponents(ItemStack line, ItemStack hook, ItemStack acc
 
     public void modifyTooltip(List<Component> components){
         for(FishingEquipmentSlot slot : FishingEquipmentSlot.values()){
-            if(getEquipment(slot) != null)
-                components.add(getEquipment(slot).getHoverName());
-            else components.add(Component.literal("null"));
+            if(this.getEquipment(slot) != null)
+                components.add(1,getComponent(this.getEquipment(slot), slot));
         }
+    }
+
+    private static Component getComponent(ItemStack itemStack, FishingEquipmentSlot slot){
+        if(itemStack.isEmpty()){
+            return Component.translatable("lore.better_rod.empty_" + slot.name().toLowerCase());
+        }
+        return Component.literal("[").append(itemStack.getHoverName()).append("]");
     }
 
     public FishingHook createHook(Player player, Level level, int luck, int lureSpeed) {
@@ -81,4 +95,12 @@ public record FishingRodComponents(ItemStack line, ItemStack hook, ItemStack acc
         return new FishingRodComponents(ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY);
     }
 
+    @Override
+    public void run(DataComponentMap.Builder components, HolderLookup.@NotNull Provider context, @NotNull Item item) {
+        components.set(ItemComponentsRegister.FISHING_ROD, new FishingRodComponents(
+                ItemStack.EMPTY,
+                ItemStack.EMPTY,
+                ItemStack.EMPTY
+        ));
+    }
 }

@@ -1,6 +1,7 @@
 package com.wither.betterrod.item;
 
 import com.wither.betterrod.init.ItemComponentsRegister;
+import com.wither.betterrod.item.components.FishingEquipmentSlot;
 import com.wither.betterrod.item.components.FishingRodComponents;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;

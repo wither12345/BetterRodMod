@@ -6,6 +6,8 @@ import com.wither.betterrod.entity.AbstractFishInterface;
 import com.wither.betterrod.init.ItemComponentsRegister;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.Identifier;
@@ -14,15 +16,17 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.fish.AbstractFish;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.function.Predicate;
 
-public record BaitComponent(List<Attract> attracts, int ticking_rate, int attract_range, int min_tick) {
+public record BaitComponent(List<Attract> attracts, int ticking_rate, int attract_range, int min_tick) implements ModifyDefaultComponentsEvent.Initializer{
     public static TagKey<@NotNull EntityType<?>> FISH_BAIT = TagKey.create(Registries.ENTITY_TYPE, Identifier.parse("fish_bait"));
     public static TagKey<@NotNull EntityType<?>> INSECT_BAIT = TagKey.create(Registries.ENTITY_TYPE, Identifier.parse("insect_bait"));
 
@@ -61,6 +65,11 @@ public record BaitComponent(List<Attract> attracts, int ticking_rate, int attrac
                     }
             );
         }
+    }
+
+    @Override
+    public void run(DataComponentMap.Builder components, HolderLookup.@NotNull Provider context, @NotNull Item item) {
+        components.set(ItemComponentsRegister.BAIT, new BaitComponent(this.attracts, this.ticking_rate, this.attract_range, this.min_tick));
     }
 
     public record Attract(@NotNull TagKey<@NotNull EntityType<?>> tagKey, double attract_rate){
