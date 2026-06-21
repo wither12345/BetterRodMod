@@ -6,9 +6,9 @@ import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 
-public class BetterRodConsumables {
+public class BetterRodProperties {
     public static final Consumable SILMON = Consumables.defaultFood()
             .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 2000, 0)))
-            .consumeSeconds(2.5f)
+            .consumeSeconds(4f)
             .build();
 }

@@ -13,11 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class ItemRegister {
-
-
-
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(BetterRodMod.MODID);
-
 
     public static final DeferredItem<@NotNull Item> GOLDEN_SPIKED_HOOK = ITEMS.registerItem("golden_spiked_hook", p -> new SpikedHookItem(p, 4));
     public static final DeferredItem<@NotNull Item> IRON_SPIKED_HOOK = ITEMS.registerItem("iron_spiked_hook", p -> new SpikedHookItem(p, 5));
@@ -41,6 +37,5 @@ public class ItemRegister {
     public static final DeferredItem<@NotNull Item> MIXED_BAIT = ITEMS.registerItem("mixed_bait", p -> new Item(p.component(ItemComponentsRegister.BAIT,
             new BaitComponent(List.of(new BaitComponent.Attract(BaitComponent.FISH_BAIT, 0.05)),5, 30, 100))));
     public static final DeferredItem<@NotNull Item> SILMON = ITEMS.registerItem("silmon",p -> new Item(p
-            .food(Foods.SALMON, BetterRodConsumables.SILMON)
-    ));
+            .food(Foods.TROPICAL_FISH, BetterRodProperties.SILMON)));
 }

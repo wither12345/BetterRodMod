@@ -1,0 +1,10 @@
+{
+  "type": "better_rod:auto_bucket",
+  "ingredient": {
+    "item": "minecraft:cod"
+  },
+  "result": {
+    "id": "minecraft:bucket_of_cod",
+    "count": 1
+  }
+}
