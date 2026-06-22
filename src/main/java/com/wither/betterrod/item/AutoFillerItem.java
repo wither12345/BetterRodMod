@@ -1,7 +1,9 @@
 package com.wither.betterrod.item;
 
-import com.wither.betterrod.item.components.FishingEquipmentSlot;
+import com.wither.betterrod.recipe.AutoBucketRecipe;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.Bucketable;
@@ -13,14 +15,9 @@ import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
-public class AutoFillerItem extends RodEquipmentItem{
+public class AutoFillerItem extends AccessoryItem{
     public AutoFillerItem(Properties properties) {
         super(properties);
-    }
-
-    @Override
-    public FishingEquipmentSlot getSlot() {
-        return FishingEquipmentSlot.ACCESSORY;
     }
 
     @Override
@@ -47,6 +44,10 @@ public class AutoFillerItem extends RodEquipmentItem{
                 }
             }
         }
+    }
 
+    @Override
+    public void modifyLoot(ObjectArrayList<ItemStack> originalLoot, Projectile hook, ServerLevel level) {
+        originalLoot.replaceAll(stack -> AutoBucketRecipe.getFromRecipe(stack, hook.getOwner(), level));
     }
 }

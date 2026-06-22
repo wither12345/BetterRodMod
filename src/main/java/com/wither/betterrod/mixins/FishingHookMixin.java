@@ -1,11 +1,15 @@
 package com.wither.betterrod.mixins;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.wither.betterrod.init.ItemComponentsRegister;
-import com.wither.betterrod.item.components.FishingEquipmentSlot;
+import com.wither.betterrod.item.AccessoryItem;
 import com.wither.betterrod.item.HookInterface;
 import com.wither.betterrod.item.RodEquipmentItem;
 import com.wither.betterrod.item.TippedHook;
 import com.wither.betterrod.item.components.BaitComponent;
+import com.wither.betterrod.item.components.FishingEquipmentSlot;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -19,6 +23,8 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.Nullable;
@@ -101,8 +107,17 @@ public abstract class FishingHookMixin extends Projectile implements HookInterfa
     private void catchingFish(BlockPos blockPos, CallbackInfo info) {
         if(this.better_rod$baitItem != ItemStack.EMPTY)
             info.cancel();
-
     }
+
+
+    @WrapOperation(method = "retrieve", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/storage/loot/LootTable;getRandomItems(Lnet/minecraft/world/level/storage/loot/LootParams;)Lit/unimi/dsi/fastutil/objects/ObjectArrayList;"))
+    private ObjectArrayList<ItemStack> wrapFishingLoot(LootTable instance, LootParams params, Operation<ObjectArrayList<ItemStack>> original) {
+        ObjectArrayList<ItemStack> originalLoot = original.call(instance, params);
+        if(better_rod$AccessoryItem.getItem() instanceof AccessoryItem accessoryItem)
+            accessoryItem.modifyLoot(originalLoot, this, params.getLevel());
+        return originalLoot;
+    }
+
 
     @Override
     public void better_rod$setEquipmentItem(FishingEquipmentSlot slot, ItemStack item) {

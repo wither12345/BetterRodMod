@@ -1,0 +1,9 @@
+{
+  "type": "better_rod:auto_bucket",
+  "ingredient": "minecraft:salmon",
+  "bucket": "minecraft:water_bucket",
+  "result": {
+    "id": "minecraft:salmon_bucket",
+    "count": 1
+  }
+}

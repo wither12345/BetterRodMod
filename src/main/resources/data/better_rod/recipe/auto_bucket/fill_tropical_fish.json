@@ -1,0 +1,9 @@
+{
+  "type": "better_rod:auto_bucket",
+  "ingredient": "minecraft:tropical_fish",
+  "bucket": "minecraft:water_bucket",
+  "result": {
+    "id": "minecraft:tropical_fish_bucket",
+    "count": 1
+  }
+}

@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.wither.betterrod.init.EntityRegister;
 import com.wither.betterrod.init.ItemComponentsRegister;
 import com.wither.betterrod.init.ItemRegister;
+import com.wither.betterrod.init.RecipeRegister;
 import com.wither.betterrod.item.TippedHook;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -79,6 +80,9 @@ public class BetterRodMod {
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
         ItemComponentsRegister.REGISTRAR.register(modEventBus);
+        RecipeRegister.RECIPE_TYPES.register(modEventBus);
+        RecipeRegister.RECIPE_CATEGORIES.register(modEventBus);
+        RecipeRegister.RECIPE_SERIALIZER.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (BetterRodMod) to respond directly to events.

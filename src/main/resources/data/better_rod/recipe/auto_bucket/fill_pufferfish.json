@@ -1,0 +1,9 @@
+{
+  "type": "better_rod:auto_bucket",
+  "ingredient": "minecraft:pufferfish",
+  "bucket": "minecraft:water_bucket",
+  "result": {
+    "id": "minecraft:pufferfish_bucket",
+    "count": 1
+  }
+}
