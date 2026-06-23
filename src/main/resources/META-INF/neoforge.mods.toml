@@ -19,7 +19,7 @@ modId="better_rod" #mandatory
 # The version number of the mod
 version="${1.0}" #mandatory
 # A display name for the mod
-displayName="better_rod" #mandatory
+displayName="BetterRod" #mandatory
 
 # A URL to query for updates for this mod. See the JSON update specification https://docs.neoforged.net/docs/misc/updatechecker/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional

@@ -26,26 +26,26 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.function.Predicate;
 
-public record BaitComponent(List<Attract> attracts, int ticking_rate, int attract_range, int min_tick) implements ModifyDefaultComponentsEvent.Initializer{
+public record BaitComponent(@NotNull TagKey<@NotNull EntityType<?>> tagKey, double attract_rate, int ticking_rate, int attract_range, int min_tick) implements ModifyDefaultComponentsEvent.Initializer{
     public static TagKey<@NotNull EntityType<?>> FISH_BAIT = TagKey.create(Registries.ENTITY_TYPE, Identifier.parse("fish_bait"));
-    public static TagKey<@NotNull EntityType<?>> INSECT_BAIT = TagKey.create(Registries.ENTITY_TYPE, Identifier.parse("insect_bait"));
+    public static TagKey<@NotNull EntityType<?>>
+            INSECT_BAIT = TagKey.create(Registries.ENTITY_TYPE, Identifier.parse("insect_bait"));
 
 
     public static final Codec<BaitComponent> CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
-                    Attract.CODEC.listOf().fieldOf("attracts").forGetter(BaitComponent::attracts),
+                    TagKey.codec(Registries.ENTITY_TYPE).fieldOf("types").forGetter(BaitComponent::tagKey),
+                    Codec.DOUBLE.fieldOf("attract_rate").forGetter(BaitComponent::attract_rate),
                     Codec.INT.fieldOf("ticking_rate").forGetter(BaitComponent::ticking_rate),
                     Codec.INT.fieldOf("attract_range").forGetter(BaitComponent::attract_range),
                     Codec.INT.fieldOf("min_tick").forGetter(BaitComponent::min_tick)
             ).apply(instance, BaitComponent::new)
     );
-    public static final StreamCodec<@NotNull ByteBuf, @NotNull BaitComponent> UNIT_STREAM_CODEC = StreamCodec.unit(new BaitComponent(null, 0, 0, 500));
+    public static final StreamCodec<@NotNull ByteBuf, @NotNull BaitComponent> UNIT_STREAM_CODEC = StreamCodec.unit(new BaitComponent(FISH_BAIT, 0, 0, 0, 500));
 
     public double getAttractChance(Entity entity){
-        for(Attract attract : attracts){
-            if(attract.test(entity))
-                return attract.attract_rate();
-        }
+        if(entity.is(tagKey))
+                return attract_rate;
         return 0;
     }
 
@@ -69,19 +69,6 @@ public record BaitComponent(List<Attract> attracts, int ticking_rate, int attrac
 
     @Override
     public void run(DataComponentMap.Builder components, HolderLookup.@NotNull Provider context, @NotNull Item item) {
-        components.set(ItemComponentsRegister.BAIT, new BaitComponent(this.attracts, this.ticking_rate, this.attract_range, this.min_tick));
-    }
-
-    public record Attract(@NotNull TagKey<@NotNull EntityType<?>> tagKey, double attract_rate){
-        public static final Codec<Attract> CODEC = RecordCodecBuilder.create(instance ->
-                instance.group(
-                        TagKey.codec(Registries.ENTITY_TYPE).fieldOf("types").forGetter(Attract::tagKey),
-                        Codec.DOUBLE.fieldOf("attract_rate").forGetter(Attract::attract_rate)
-                ).apply(instance, Attract::new)
-        );
-
-        public boolean test(Entity entity){
-            return entity.is(tagKey);
-        }
+        components.set(ItemComponentsRegister.BAIT, new BaitComponent(this.tagKey, this.attract_rate, this.ticking_rate, this.attract_range, this.min_tick));
     }
 }

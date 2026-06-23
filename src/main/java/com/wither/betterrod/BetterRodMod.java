@@ -60,6 +60,7 @@ public class BetterRodMod {
                 output.accept(ItemRegister.TWISTING_VINES_LINE);
                 output.accept(ItemRegister.WEEPING_VINES_LINE);
                 output.accept(ItemRegister.AUTO_FILLER);
+                output.accept(ItemRegister.AUTO_SMELTER);
                 output.accept(ItemRegister.QUICK_CLOCK);
                 output.accept(ItemRegister.LUCK_CLOVER);
                 TippedHook.putOnTab(output);

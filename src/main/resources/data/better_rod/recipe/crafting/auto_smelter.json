@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "show_notification": true,
+  "group": "auto_smelter",
+  "category": "misc",
+  "pattern": [
+    "crc",
+    "rfr",
+    "crc"
+  ],
+  "key": {
+    "f": "minecraft:furnace",
+    "c": "#minecraft:coals",
+    "r": "minecraft:redstone"
+  },
+  "result": "better_rod:auto_smelter"
+}
