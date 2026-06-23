@@ -1,10 +1,7 @@
 package com.wither.betterrod.init;
 
 import com.wither.betterrod.BetterRodMod;
-import com.wither.betterrod.entity.HookedBlockEntity;
-import com.wither.betterrod.entity.NetherBrickHookEntity;
-import com.wither.betterrod.entity.NetheriteHookEntity;
-import com.wither.betterrod.entity.StickyHookEntity;
+import com.wither.betterrod.entity.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -47,6 +44,21 @@ public class EntityRegister {
     public static final DeferredHolder<@NotNull EntityType<?>, @NotNull EntityType<@NotNull NetherBrickHookEntity>> NETHER_BRICK_HOOK = ENTITIES.registerEntityType(
             "nether_brick_hook",
             NetherBrickHookEntity::new,
+            MobCategory.MISC,
+            (builder -> builder
+                    .noLootTable()
+                    .noSave()
+                    .noSummon()
+                    .sized(0.25F, 0.25F)
+                    .clientTrackingRange(4)
+                    .updateInterval(5)
+                    .fireImmune()
+            )
+    );
+
+    public static final DeferredHolder<@NotNull EntityType<?>, @NotNull EntityType<@NotNull BlazeHookEntity>> BLAZE_HOOK = ENTITIES.registerEntityType(
+            "blaze_hook",
+            BlazeHookEntity::new,
             MobCategory.MISC,
             (builder -> builder
                     .noLootTable()

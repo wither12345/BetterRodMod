@@ -18,6 +18,7 @@ public class ItemRegister {
     public static final DeferredItem<@NotNull Item> DIAMOND_SPIKED_HOOK = ITEMS.registerItem("diamond_spiked_hook", p -> new SpikedHookItem(p, 6));
     public static final DeferredItem<@NotNull Item> NETHERITE_SPIKED_HOOK = ITEMS.registerItem("netherite_spiked_hook", p -> new NetheriteSpikedHookItem(p, 7));
     public static final DeferredItem<@NotNull Item> NETHER_BRICK_HOOK = ITEMS.registerItem("nether_brick_hook", NetherBrickHookItem::new);
+    public static final DeferredItem<@NotNull Item> BLAZE_HOOK = ITEMS.registerItem("blaze_hook", BlazeHookItem::new);
     public static final DeferredItem<@NotNull Item> STICKY_HOOK = ITEMS.registerItem("sticky_hook", StickyHook::new);
     public static final DeferredItem<@NotNull Item> WIND_HOOK = ITEMS.registerItem("wind_hook", WindHookItem::new);
     public static final DeferredItem<@NotNull Item> TIPPED_HOOK = ITEMS.registerItem("tipped_hook", p -> new TippedHook(p.component(DataComponents.POTION_DURATION_SCALE, 0.25f)));

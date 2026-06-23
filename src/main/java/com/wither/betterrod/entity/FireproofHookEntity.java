@@ -59,48 +59,48 @@ public abstract class FireproofHookEntity extends FishingHook {
         if (fluidState.is(FluidTags.LAVA)) {
             liquidHeight = fluidState.getHeight(this.level(), blockPos);
             this.setDeltaMovement(this.getDeltaMovement().add(0.0, 0.08, 0.0));
-        }
 
-        boolean isInLava = liquidHeight > 0.0F;
-        if (this.currentState == FishHookState.FLYING) {
-            if (this.getHookedIn() != null) {
-                this.setDeltaMovement(Vec3.ZERO);
-                this.currentState = FishHookState.HOOKED_IN_ENTITY;
-                return;
-            }
-
-            if (isInLava) {
-                this.setDeltaMovement(this.getDeltaMovement().multiply(0.3, 0.2, 0.3));
-                this.currentState = FishHookState.BOBBING;
-                this.inLava = true;
-                return;
-            }
-        }
-        if(this.currentState == FishHookState.BOBBING){
-            Vec3 movement = this.getDeltaMovement();
-            double force = this.getY() + movement.y - blockPos.getY() - liquidHeight;
-            if (Math.abs(force) < 0.01) {
-                force += Math.signum(force) * 0.1;
-            }
-
-            this.setDeltaMovement(movement.x * 0.9, movement.y - force * this.random.nextFloat() * 0.2, movement.z * 0.9);
-
-            if (isInLava) {
-                this.outOfLavaTime = Math.max(0, this.outOfLavaTime - 1);
-
-                if (this.biting) {
-                    this.setDeltaMovement(
-                            this.getDeltaMovement().add(0.0, -0.05 * this.syncronizedRandom.nextFloat() * this.syncronizedRandom.nextFloat(), 0.0)
-                    );
+            boolean isInLava = liquidHeight > 0.0F;
+            if (this.currentState == FishHookState.FLYING) {
+                if (this.getHookedIn() != null) {
+                    this.setDeltaMovement(Vec3.ZERO);
+                    this.currentState = FishHookState.HOOKED_IN_ENTITY;
+                    return;
                 }
 
-                if (!this.level().isClientSide()) {
-                    this.catchingLavaFish(blockPos);
+                if (isInLava) {
+                    this.setDeltaMovement(this.getDeltaMovement().multiply(0.3, 0.2, 0.3));
+                    this.currentState = FishHookState.BOBBING;
+                    this.inLava = true;
+                    return;
+                }
+            }
+            if(this.currentState == FishHookState.BOBBING){
+                Vec3 movement = this.getDeltaMovement();
+                double force = this.getY() + movement.y - blockPos.getY() - liquidHeight;
+                if (Math.abs(force) < 0.01) {
+                    force += Math.signum(force) * 0.1;
                 }
 
+                this.setDeltaMovement(movement.x * 0.9, movement.y - force * this.random.nextFloat() * 0.2, movement.z * 0.9);
 
-            } else {
-                this.outOfLavaTime = Math.min(10, this.outOfLavaTime + 1);
+                if (isInLava) {
+                    this.outOfLavaTime = Math.max(0, this.outOfLavaTime - 1);
+
+                    if (this.biting) {
+                        this.setDeltaMovement(
+                                this.getDeltaMovement().add(0.0, -0.05 * this.syncronizedRandom.nextFloat() * this.syncronizedRandom.nextFloat(), 0.0)
+                        );
+                    }
+
+                    if (!this.level().isClientSide()) {
+                        this.catchingLavaFish(blockPos);
+                    }
+
+
+                } else {
+                    this.outOfLavaTime = Math.min(10, this.outOfLavaTime + 1);
+                }
             }
         }
     }

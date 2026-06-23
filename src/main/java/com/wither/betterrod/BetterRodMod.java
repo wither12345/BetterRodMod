@@ -53,6 +53,7 @@ public class BetterRodMod {
                 output.accept(ItemRegister.DIAMOND_SPIKED_HOOK);
                 output.accept(ItemRegister.NETHERITE_SPIKED_HOOK);
                 output.accept(ItemRegister.NETHER_BRICK_HOOK);
+                output.accept(ItemRegister.BLAZE_HOOK);
                 output.accept(ItemRegister.STICKY_HOOK);
                 output.accept(ItemRegister.WIND_HOOK);
                 output.accept(ItemRegister.ENDER_LINE);
