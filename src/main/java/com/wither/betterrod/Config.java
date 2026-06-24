@@ -10,7 +10,12 @@ public class Config {
     public static final ModConfigSpec.BooleanValue LAVA_FISHING = BUILDER
             .comment("Allow lava fishing with specific hook")
             .define("lavaFishing", true);
-
+    public static final ModConfigSpec.BooleanValue CHUMMING = BUILDER
+            .comment("Allow drop bait for chumming")
+            .define("chumming", true);
+    public static final ModConfigSpec.BooleanValue BYPASS_PLAYER = BUILDER
+            .comment("Hook will ignore Player")
+            .define("bypassPlayer", true);
     /*
     public static final ModConfigSpec.IntValue MAGIC_NUMBER = BUILDER
             .comment("A magic number")

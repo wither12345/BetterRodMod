@@ -2,6 +2,7 @@ package com.wither.betterrod.mixins;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.wither.betterrod.Config;
 import com.wither.betterrod.init.ItemComponentsRegister;
 import com.wither.betterrod.item.AccessoryItem;
 import com.wither.betterrod.item.HookInterface;
@@ -94,8 +95,10 @@ public abstract class FishingHookMixin extends Projectile implements HookInterfa
     }
 
 
-    @Inject(method = "setHookedEntity", at = @At("TAIL"))
+    @Inject(method = "setHookedEntity", at = @At("HEAD"), cancellable = true)
     private void setHookedEntity(@Nullable Entity hookedIn, CallbackInfo info){
+        if(hookedIn instanceof Player && Config.BYPASS_PLAYER.get())
+            info.cancel();
         PotionContents contents = better_rod$HookItem.get(DataComponents.POTION_CONTENTS);
         if(contents != null && hookedIn instanceof LivingEntity living){
             TippedHook.applyEffect(contents, living, this.getOwner(), better_rod$HookItem.getOrDefault(DataComponents.POTION_DURATION_SCALE, 1.0F));

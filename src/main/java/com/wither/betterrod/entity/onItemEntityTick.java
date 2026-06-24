@@ -16,7 +16,7 @@ public class onItemEntityTick {
         if(event.getEntity() instanceof ItemEntity itemEntity && itemEntity.isInWater()){
             ItemStack stack = itemEntity.getItem();
             BaitComponent baitComponent = stack.get(ItemComponentsRegister.BAIT);
-            if(baitComponent != null && itemEntity.level() instanceof ServerLevel level){
+            if(baitComponent != null && itemEntity.level() instanceof ServerLevel){
                 BaitComponent.attracting(itemEntity, stack);
             }
         }

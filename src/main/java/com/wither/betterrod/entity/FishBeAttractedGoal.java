@@ -75,7 +75,7 @@ public class FishBeAttractedGoal extends Goal {
             if(eating_cooldown > 0)
                 eating_cooldown --;
             else if (this.animal.getNavigation().isDone()) {
-                if (this.animal.distanceTo(wantedEntity) < 1) {
+                if (this.animal.distanceTo(wantedEntity) < 2) {
                     eating_cooldown = 200;
                     this.animal.playSound(SoundEvents.GENERIC_EAT.value(), 1.0F, 1.0F);
                     itemEntity.getItem().shrink(1);
