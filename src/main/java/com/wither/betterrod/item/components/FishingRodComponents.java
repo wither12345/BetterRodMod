@@ -61,6 +61,7 @@ public record FishingRodComponents(ItemStack line, ItemStack hook, ItemStack acc
             if(this.getEquipment(slot) != null)
                 components.add(1,getComponent(this.getEquipment(slot), slot));
         }
+        components.add(1,Component.translatable("lore.better_rod.apply"));
     }
 
     private static Component getComponent(ItemStack itemStack, FishingEquipmentSlot slot){
